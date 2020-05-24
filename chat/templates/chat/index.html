@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="d-flex">
+        <div class="card w-25 mx-auto">
+            <div class="card-header">
+                <h1 class="card-title">Chat</h1>
+            </div>
+            <div class="card-body">
+                <h6>Qual sala você gostaria de entrar?</h6>
+                <input id="room-name-input" class="form-control" type="text" size="100"><br>
+                <input id="room-name-submit" class="btn btn-primary" type="button" value="Entrar">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('#room-name-input').focus();
+        document.querySelector('#room-name-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#room-name-submit').click();
+            }
+        };
+
+        document.querySelector('#room-name-submit').onclick = function(e) {
+            var roomName = document.querySelector('#room-name-input').value;
+            window.location.pathname = '/chat/' + roomName + '/';
+        };
+    </script>
+{% endblock %}
